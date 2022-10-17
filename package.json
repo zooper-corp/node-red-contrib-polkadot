@@ -1,6 +1,6 @@
 {
     "name": "node-red-contrib-polkadot",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Provides a way to interact with a polkadot based chain through the JS client library.",
     "author": "Zooper Corp <corp@zooper.org>",
     "license": "MIT",
