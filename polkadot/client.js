@@ -10,7 +10,7 @@ class ApiClient {
         this.endpoint = endpoint;
         this.keytype = keytype;
         // Main info
-        this.decimals = info.tokenDecimals.unwrap()[0].toBigInt();
+        this.decimals = info.tokenDecimals.unwrap()[0].toNumber();
         this.symbol = info.tokenSymbol.unwrap()[0].toString();
         // Version
         const version = api.consts.system.version
@@ -19,13 +19,13 @@ class ApiClient {
     }
 
     floatToAmount(value) {
-        const exp = BigInt(10) ** this.decimals;
+        const exp = BigInt(10) **  BigInt(this.decimals);
         return multiplyFloat(exp, parseFloat(value));
     }
 
     amountToFloat(bigIntAmount) {
         const a = new BigDecimal(bigIntAmount);
-        const b = new BigDecimal(BigInt(10) ** this.decimals);
+        const b = new BigDecimal(BigInt(10) ** BigInt(this.decimals));
         return parseFloat(a.divide(b).toString())
     }
 
