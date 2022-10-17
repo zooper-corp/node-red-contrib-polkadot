@@ -1,0 +1,1 @@
+A very basic Node Red JS API wrapper. Supports connecting to the chain, querying state and simple transfers using a proxy.  
