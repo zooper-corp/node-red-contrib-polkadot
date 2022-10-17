@@ -1,6 +1,8 @@
 <script type="text/javascript">
     RED.nodes.registerType('client',{
         category: 'config',
+        color: '#F6209A',
+        icon: "font-awesome/fa-link",
         defaults: {
             endpoint: {value:"wss://rpc.polkadot.io/",required:true},
             keytype: {value:"sr25519",required:true}
