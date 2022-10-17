@@ -162,7 +162,7 @@ module.exports = function (RED) {
         node.status({fill: "yellow", shape: "dot", text: "connecting"});
         node.connect = async function () {
             try {
-                const apiClient = node.context().get("client");
+                const apiClient = node._client ? node._client : null
                 if (apiClient
                     && apiClient.api
                     && apiClient.api.isConnected) return apiClient;
@@ -170,7 +170,7 @@ module.exports = function (RED) {
                 node.log(`Connecting to ${node.endpoint}`);
                 const client = await getClient(node.endpoint, node.keytype);
                 node.log(`Connected to ${client.chain} v${client.runtime}`);
-                node.context().set("client", client)
+                node._client = client
                 return client;
             } catch (e) {
                 node.warn(e)
