@@ -3,6 +3,7 @@
         category: 'polkadot',
         color: '#F6209A',
         defaults: {
+            name: {value: ""},
             client: {value:"",type:"client",required:true}
         },
         inputs:1,
@@ -15,6 +16,10 @@
 </script>
 
 <script type="text/html" data-template-name="chain info">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="">
+    </div>
     <div class="form-row">
         <label for="node-input-client"><i class="fa fa-tag"></i> Client</label>
         <input type="text" id="node-input-client" placeholder="Client">

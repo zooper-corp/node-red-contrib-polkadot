@@ -4,16 +4,21 @@
         color: '#F6209A',
         icon: "font-awesome/fa-link",
         defaults: {
+            name: {value:""},
             endpoint: {value:"wss://rpc.polkadot.io/",required:true},
             keytype: {value:"sr25519",required:true}
         },
         label: function() {
-            return this.endpoint;
+            return this.name||this.endpoint;
         }
     });
 </script>
 
 <script type="text/html" data-template-name="client">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="">
+    </div>
     <div class="form-row">
         <label for="node-config-input-endpoint"><i class="fa fa-bookmark"></i> Endpoint</label>
         <input type="text" id="node-config-input-endpoint">

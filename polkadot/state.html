@@ -3,6 +3,7 @@
         category: 'polkadot',
         color: '#F6209A',
         defaults: {
+            name: {value:""},
             client: {value:"",type:"client",required:true},
             method: {value:"timestamp.now()",required:true}
         },
@@ -10,8 +11,7 @@
         outputs:1,
         icon: "font-awesome/fa-hdd-o",
         label: function() {
-            return this.method.substring(0, this.method.indexOf('('))
-                ||"query state";
+            return this.name||this.method.substring(0, this.method.indexOf('('))||"query state";
         }
     });
 </script>

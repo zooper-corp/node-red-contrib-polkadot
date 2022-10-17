@@ -4,6 +4,7 @@
         color: '#F6209A',
         defaults: {
             client: {value:"",type:"client",required:true},
+            name: {value:""},
             source: {value:"",required:true},
             destination: {value:"",required:true},
             amount: {value:0,validate:RED.validators.number(),required:true},
@@ -15,12 +16,16 @@
         outputs:1,
         icon: "font-awesome/fa-exchange",
         label: function() {
-            return "transfer";
+            return this.name||"transfer";
         }
     });
 </script>
 
 <script type="text/html" data-template-name="transfer">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="">
+    </div>
     <div class="form-row">
         <label for="node-input-client"><i class="fa fa-tag"></i> Client</label>
         <input type="text" id="node-input-client" placeholder="Client">
