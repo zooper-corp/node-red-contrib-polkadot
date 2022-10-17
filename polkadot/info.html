@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('chain info',{
+        category: 'polkadot',
+        color: '#F6209A',
+        defaults: {
+            client: {value:"",type:"client",required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-info-circle",
+        label: function() {
+            return this.name||"chain info";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="chain info">
+    <div class="form-row">
+        <label for="node-input-client"><i class="fa fa-tag"></i> Client</label>
+        <input type="text" id="node-input-client" placeholder="Client">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="chain info">
+    <p>Returns payload with basic chain info (decimals, name, head...)</p>
+</script>

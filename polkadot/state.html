@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('query state',{
+        category: 'polkadot',
+        color: '#F6209A',
+        defaults: {
+            client: {value:"",type:"client",required:true},
+            method: {value:"timestamp.now()",required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-hdd-o",
+        label: function() {
+            return this.method.substring(0, this.method.indexOf('('))
+                ||"query state";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="query state">
+    <div class="form-row">
+        <label for="node-input-client"><i class="fa fa-tag"></i> Client</label>
+        <input type="text" id="node-input-client" placeholder="Client">
+    </div>
+    <div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tag"></i> Method</label>
+        <input type="text" id="node-input-method" placeholder="Method">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="query state">
+    <p>Query storage at a given pallet / method</p>
+</script>

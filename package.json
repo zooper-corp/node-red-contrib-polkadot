@@ -1,0 +1,28 @@
+{
+    "name": "node-red-contrib-polkadot",
+    "version": "0.0.1",
+    "description": "Provides a way to interact with a polkadot based chain through the JS client library.",
+    "author": "Zooper Corp <corp@zooper.org>",
+    "license": "MIT",
+    "keywords": [
+        "node-red",
+        "polkadot",
+        "substrate",
+        "client"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zooper-corp/node-red-contrib-polkadot.git"
+    },
+    "dependencies": {
+        "@polkadot/api": "^9.5.1"
+    },
+    "node-red": {
+        "nodes": {
+            "client": "polkadot/client.js",
+            "info": "polkadot/info.js",
+            "state": "polkadot/state.js",
+            "transfer": "polkadot/transfer.js"
+        }
+    }
+}

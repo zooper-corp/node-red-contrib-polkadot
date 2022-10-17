@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    RED.nodes.registerType('transfer',{
+        category: 'polkadot',
+        color: '#F6209A',
+        defaults: {
+            client: {value:"",type:"client",required:true},
+            source: {value:"",required:true},
+            destination: {value:"",required:true},
+            amount: {value:0,validate:RED.validators.number(),required:true},
+        },
+        credentials: {
+            seed: {type:"password",required:true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-exchange",
+        label: function() {
+            return "transfer";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="transfer">
+    <div class="form-row">
+        <label for="node-input-client"><i class="fa fa-tag"></i> Client</label>
+        <input type="text" id="node-input-client" placeholder="Client">
+    </div>
+    <div class="form-row">
+        <label for="node-input-source"><i class="fa fa-tag"></i> Source</label>
+        <input type="text" id="node-input-source" placeholder="0x....">
+    </div>
+    <div class="form-row">
+        <label for="node-input-destination"><i class="fa fa-tag"></i> Destination</label>
+        <input type="text" id="node-input-destination" placeholder="0x....">
+    </div>
+    <div class="form-row">
+        <label for="node-input-amount"><i class="fa fa-tag"></i> Amount</label>
+        <input type="text" id="node-input-amount" placeholder="0.0">
+    </div>
+    <div class="form-row">
+        <label for="node-input-seed"><i class="fa fa-tag"></i> Proxy Seed</label>
+        <input type="password" id="node-input-seed" placeholder="">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="transfer">
+    <p>Transfer a given amount from source to destination using a balance proxy</p>
+</script>

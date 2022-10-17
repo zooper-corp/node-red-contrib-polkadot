@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    RED.nodes.registerType('client',{
+        category: 'config',
+        defaults: {
+            endpoint: {value:"wss://rpc.polkadot.io/",required:true},
+            keytype: {value:"sr25519",required:true}
+        },
+        label: function() {
+            return this.endpoint;
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="client">
+    <div class="form-row">
+        <label for="node-config-input-endpoint"><i class="fa fa-bookmark"></i> Endpoint</label>
+        <input type="text" id="node-config-input-endpoint">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-keytype"><i class="fa fa-bookmark"></i> Keyring Type</label>
+        <select name="cars" id="node-config-input-keytype">
+            <option value="sr25519">sr25519</option>
+            <option value="ed25519">ed25519</option>
+            <option value="ethereum">ethereum</option>
+        </select>
+    </div>
+</script>
