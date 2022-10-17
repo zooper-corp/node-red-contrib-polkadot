@@ -32,6 +32,9 @@ module.exports = function (RED) {
                     const hash = await transfer.signAndSend(pair);
                     // Done
                     msg.payload = {
+                        from: source,
+                        to: dest,
+                        symbol: client.symbol,
                         transferred: `${client.amountToFloat(amount)}`,
                         hash: `${hash}`
                     }
