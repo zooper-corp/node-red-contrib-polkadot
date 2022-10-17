@@ -17,7 +17,7 @@ module.exports = function (RED) {
                     const [result] = await Promise.all([
                         api.query.system.account(address)
                     ]);
-                    node.log(JSON.stringify(result));
+                    node.log(JSON.stringify(result.toJSON()));
                     msg.payload = {
                         symbol: client.symbol,
                         free: client.amountToFloat(result.data.free.toBigInt()),

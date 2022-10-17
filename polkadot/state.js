@@ -16,7 +16,7 @@ module.exports = function (RED) {
                     const [result] = await Promise.all([
                         eval(`api.query.${config.method}`),
                     ]);
-                    node.log(JSON.stringify(result))
+                    node.log(JSON.stringify(result.toJSON()))
                     msg.payload = result.toJSON();
                     // Done
                     node.send(msg);
