@@ -1,5 +1,5 @@
 module.exports = function (RED) {
-    function PolkadotApiTransferNode(config) {
+    function PolkadotApiTxNode(config) {
         RED.nodes.createNode(this, config);
         const node = this;
         node.client = RED.nodes.getNode(config.client);
@@ -12,28 +12,26 @@ module.exports = function (RED) {
                 const api = client.api
                 node.status({fill: "green", shape: "dot", text: "connected"});
                 try {
-                    // Get main options
-                    const source = "source" in msg ? msg.source : config.source;
-                    const dest = "destination" in msg ? msg.destination : config.destination;
-                    const amount = client.floatToAmount("amount" in msg ? msg.amount : config.amount);
-                    // Get keyring
                     const pair = client.keyFromMnemonic(node.credentials.seed)
+                    const method = "method" in msg ? msg.method : config.method;
+                    const proxy = "proxy" in msg ? msg.proxy : config.proxy;
+                    const address = "address" in msg ? msg.address : config.address;
                     // Create a extrinsic, transferring 1 units to Target
-                    node.log(`Transfer ${source} => ${dest} via ${pair.address} amount: ${amount}`)
-                    const transfer = api.tx.proxy.proxy(
-                        source,
-                        "Balances",
-                        api.tx.balances.transfer(dest, amount),
-                    )
+                    node.log(`Tx ${method} => via ${pair.address} [proxy:${proxy}]`)
+                    const transfer = proxy ? eval(`api.tx.proxy.proxy(
+                        '${address}',
+                        '${proxy}',
+                        api.tx.${method},
+                    )`) : eval(`api.tx.${method}`)
+                    node.log(`Signing ${transfer}`)
                     // Sign and send the transaction using our account
                     const hash = await transfer.signAndSend(pair);
                     // Done
                     msg.payload = {
-                        from: source,
-                        to: dest,
-                        symbol: client.symbol,
-                        transferred: `${client.amountToFloat(amount)}`,
-                        hash: `${hash}`
+                        method: method,
+                        proxy: proxy,
+                        address: address,
+                        hash: hash
                     }
                     node.send(msg);
                 } catch (e) {
@@ -46,7 +44,7 @@ module.exports = function (RED) {
         });
     }
 
-    RED.nodes.registerType("transfer", PolkadotApiTransferNode, {
+    RED.nodes.registerType("transact", PolkadotApiTxNode, {
         credentials: {
             seed: {type: "password", required: true}
         }

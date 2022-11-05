@@ -1,16 +1,16 @@
 <script type="text/javascript">
-    RED.nodes.registerType('chain info',{
+    RED.nodes.registerType('chain info', {
         category: 'polkadot',
         color: '#F6209A',
         defaults: {
             name: {value: ""},
-            client: {value:"",type:"client",required:true}
+            client: {value: "", type: "client", required: true}
         },
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
         icon: "font-awesome/fa-info-circle",
-        label: function() {
-            return this.name||"chain info";
+        label: function () {
+            return this.name || "chain info";
         }
     });
 </script>

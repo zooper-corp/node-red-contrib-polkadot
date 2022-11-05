@@ -1,17 +1,17 @@
 <script type="text/javascript">
-    RED.nodes.registerType('balance',{
+    RED.nodes.registerType('balance', {
         category: 'polkadot',
         color: '#F6209A',
         defaults: {
-            client: {value:"",type:"client",required:true},
-            name: {value:""},
-            address: {value:"",required:true},
+            client: {value: "", type: "client", required: true},
+            name: {value: ""},
+            address: {value: "", required: true},
         },
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
         icon: "font-awesome/fa-money",
-        label: function() {
-            return this.name||"balance";
+        label: function () {
+            return this.name || "balance";
         }
     });
 </script>

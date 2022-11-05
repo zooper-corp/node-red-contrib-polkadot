@@ -1,22 +1,22 @@
 <script type="text/javascript">
-    RED.nodes.registerType('transfer',{
+    RED.nodes.registerType('transfer', {
         category: 'polkadot',
         color: '#F6209A',
         defaults: {
-            client: {value:"",type:"client",required:true},
-            name: {value:""},
-            source: {value:"",required:true},
-            destination: {value:"",required:true},
-            amount: {value:0,validate:RED.validators.number(),required:true},
+            name: {value: ""},
+            client: {value: "", type: "client", required: true},
+            source: {value: "", required: true},
+            destination: {value: "", required: true},
+            amount: {value: 0, validate: RED.validators.number(), required: true},
         },
         credentials: {
-            seed: {type:"password",required:true}
+            seed: {type: "password", required: true}
         },
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
         icon: "font-awesome/fa-exchange",
-        label: function() {
-            return this.name||"transfer";
+        label: function () {
+            return this.name || "transfer";
         }
     });
 </script>

@@ -19,7 +19,7 @@ class ApiClient {
     }
 
     floatToAmount(value) {
-        const exp = BigInt(10) **  BigInt(this.decimals);
+        const exp = BigInt(10) ** BigInt(this.decimals);
         return multiplyFloat(exp, parseFloat(value));
     }
 

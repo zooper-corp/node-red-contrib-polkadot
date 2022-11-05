@@ -1,17 +1,17 @@
 <script type="text/javascript">
-    RED.nodes.registerType('query state',{
+    RED.nodes.registerType('query state', {
         category: 'polkadot',
         color: '#F6209A',
         defaults: {
-            name: {value:""},
-            client: {value:"",type:"client",required:true},
-            method: {value:"timestamp.now()",required:true}
+            name: {value: ""},
+            client: {value: "", type: "client", required: true},
+            method: {value: "timestamp.now()", required: true}
         },
-        inputs:1,
-        outputs:1,
+        inputs: 1,
+        outputs: 1,
         icon: "font-awesome/fa-hdd-o",
-        label: function() {
-            return this.name||this.method.substring(0, this.method.indexOf('('))||"query state";
+        label: function () {
+            return this.name || this.method.substring(0, this.method.indexOf('(')) || "query state";
         }
     });
 </script>
