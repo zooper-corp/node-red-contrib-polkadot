@@ -10,11 +10,12 @@ module.exports = function (RED) {
                 node.status({fill: "red", shape: "dot", text: "disconnected"});
             } else {
                 const api = client.api
+                const method = "address" in msg ? msg.method : config.method;
                 node.status({fill: "green", shape: "dot", text: "connected"});
                 try {
                     // Exec
                     const [result] = await Promise.all([
-                        eval(`api.query.${config.method}`),
+                        eval(`api.query.${method}`),
                     ]);
                     msg.payload = JSON.parse(JSON.stringify(result));
                     // Done

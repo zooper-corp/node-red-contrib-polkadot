@@ -5,7 +5,7 @@
         defaults: {
             name: {value: ""},
             client: {value: "", type: "client", required: true},
-            method: {value: "timestamp.now()", required: true}
+            method: {value: "timestamp.now()", required: false}
         },
         inputs: 1,
         outputs: 1,
@@ -27,7 +27,7 @@
     </div>
     <div class="form-row">
         <label for="node-input-method"><i class="fa fa-tag"></i> Method</label>
-        <input type="text" id="node-input-method" placeholder="Method">
+        <input type="text" id="node-input-method" placeholder="Method (or msg.method)">
     </div>
 </script>
 
