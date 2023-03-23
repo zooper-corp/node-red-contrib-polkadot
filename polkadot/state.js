@@ -11,11 +11,13 @@ module.exports = function (RED) {
             } else {
                 const api = client.api
                 const method = "method" in msg ? msg.method : config.method;
+                const qtype = "qtype" in msg ? msg.qtype : config.qtype;
+
                 node.status({fill: "green", shape: "dot", text: "connected"});
                 try {
                     // Exec
                     const [result] = await Promise.all([
-                        eval(`api.query.${method}`),
+                        eval(`api.${qtype}.${method}`),
                     ]);
                     msg.payload = JSON.parse(JSON.stringify(result));
                     // Done
