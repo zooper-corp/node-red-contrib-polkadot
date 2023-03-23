@@ -5,13 +5,16 @@
         defaults: {
             name: {value: ""},
             client: {value: "", type: "client", required: true},
+            qtype: {value: "query", required: false},
             method: {value: "timestamp.now()", required: false}
         },
         inputs: 1,
         outputs: 1,
         icon: "font-awesome/fa-hdd-o",
         label: function () {
-            return this.name || this.method.substring(0, this.method.indexOf('(')) || "query state";
+            let full_method;
+            if (this.method && this.qtype) full_method=`${this.qtype}.${this.method.substring(0, this.method.indexOf('('))}`
+            return this.name || full_method || "query api";
         }
     });
 </script>
@@ -26,11 +29,20 @@
         <input type="text" id="node-input-client" placeholder="Client">
     </div>
     <div class="form-row">
+        <label for="node-input-qtype"><i class="fa fa-cogs"></i> Query Type</label>
+        <select id="node-input-qtype">
+            <option value="query">api.query</option>
+            <option value="rpc">api.rpc</option>
+            <option value="consts">api.consts</option>
+            <option value="$">api.{ msg.qtype }</option>
+        </select>
+    </div>
+    <div class="form-row">
         <label for="node-input-method"><i class="fa fa-tag"></i> Method</label>
         <input type="text" id="node-input-method" placeholder="Method (or msg.method)">
     </div>
 </script>
 
 <script type="text/html" data-help-name="query state">
-    <p>Query storage at a given pallet / method</p>
+    <p>Query polkadot api at a given pallet / method</p>
 </script>
