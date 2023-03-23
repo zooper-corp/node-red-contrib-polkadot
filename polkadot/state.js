@@ -9,7 +9,7 @@ module.exports = function (RED) {
             // If query type is missing in configuration must be set to historic default
             if(config.qtype == undefined){
                 config.qtype="query";
-                node.warn('Query Type missing, using defaulting to "query"')
+                node.warn('Query Type missing, using default "query", please configure the node')
             }
 
             node.status({fill: "yellow", shape: "dot", text: "connecting"});
