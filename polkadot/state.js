@@ -32,7 +32,7 @@ module.exports = function (RED) {
                     const [result] = await Promise.all([
                         eval(`api.${qtype}.${method}`),
                     ]);
-                    msg.payload = JSON.parse(JSON.stringify(result));
+                    msg.payload = JSON.parse(JSON.stringify(result.toHuman()));
                     // Done
                     node.send(msg);
                 } catch (e) {
